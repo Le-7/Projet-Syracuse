@@ -59,9 +59,6 @@ set title 'Un en fonction de n'
 set xlabel 'n'
 set ylabel 'Un'
 plot for [t = $x : $y : 1] 'f'.t.'.dat' i 0 u 1:2 with lines title ''
-set output
-set terminal pop
-replot
 EOF
 gnuplot <<EOF
 set terminal jpeg 
