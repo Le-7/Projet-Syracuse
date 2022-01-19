@@ -54,7 +54,8 @@ int creationfichier(FILE* fichier,unsigned long x,int i, unsigned long max, unsi
     fprintf(fichier,"%d %lu\n",i,x);
     if(x==1)
     {
-        fprintf(fichier,"\n\n%lu %lu\n\n\n%lu %d\n\n\n%lu %d\n",tmp, max, tmp, i, tmp, maxpourvolalt-1);
+        if(maxpourvolalt<=0)maxpourvolalt =1;
+        fprintf(fichier,"\nAltitudemax=%lu\nDureevol=%d\ndureealtitude=%d\n",max,i, maxpourvolalt-1);
         return 0;
     }
 

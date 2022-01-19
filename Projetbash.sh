@@ -52,6 +52,15 @@ if [ "$error" -ne 0 ] ; then
  exit 5
 fi
 done
+touch toto.dat
+touch tata.dat
+touch titi.dat
+for (( i=x; i<=y; i++ ))
+do 
+echo "${i} $(cat 'f'$i'.dat' | tail -1 | grep -Eo '[0-9]{1,}')" >> toto.dat
+echo "${i} $(cat 'f'$i'.dat' | tail -2 | head -n +1 | grep -Eo '[0-9]{1,}')" >> tata.dat
+echo "${i} $(cat 'f'$i'.dat' | tail -3 | head -n +1 | grep -Eo '[0-9]{1,}')" >> titi.dat
+done
 gnuplot <<EOF
 set terminal jpeg 
 set output "../vols$x-$y.jpg"
@@ -66,7 +75,7 @@ set output "../altmax$x-$y.jpg"
 set title 'Altitude maximum pour chaque U0'
 set xlabel 'U0'
 set ylabel 'Altitude max'
-plot for [t = $x : $y : 1] 'f'.t.'.dat' i 1 u 1:2 w p ls 1 title '' 
+plot "titi.dat" u 1:2 with lines title ''
 EOF
 gnuplot <<EOF
 set terminal jpeg 
@@ -74,7 +83,7 @@ set output "../dureedevol$x-$y.jpg"
 set title 'Durée de vol pour chaque U0'
 set xlabel 'U0'
 set ylabel 'Durée de vol'
-plot for [t = $x : $y : 1] 'f'.t.'.dat' i 2 u 1:2 w p ls 1 title '' 
+plot "tata.dat" u 1:2 with lines title ''
 EOF
 gnuplot <<EOF
 set terminal jpeg 
@@ -82,13 +91,13 @@ set output "../dureevolalt$x-$y.jpg"
 set title 'Durée de vol en altitude pour chaque U0'
 set xlabel 'U0'
 set ylabel 'Durée de vol en altitude'
-plot for [t = $x : $y : 1] 'f'.t.'.dat' i 3 u 1:2 w p ls 1 title '' 
+plot "toto.dat" u 1:2 with lines title '' 
 EOF
 cd ..
-xdg-open ./vols$x-$y.jpg
-xdg-open ./altmax$x-$y.jpg
-xdg-open ./dureedevol$x-$y.jpg
-xdg-open ./dureevolalt$x-$y.jpg
+display ./vols$x-$y.jpg &
+display ./altmax$x-$y.jpg &
+display ./dureedevol$x-$y.jpg &
+display ./dureevolalt$x-$y.jpg &
 rm -rf tmp
 cd ..
 }
