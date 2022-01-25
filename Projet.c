@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>   #enlevercellela
-//commande de compil gcc Projet.c -lm -o Projet
+//commande de compil gcc Projet.c -o Projet
 int creationfichier(FILE*,unsigned long ,int , unsigned long , unsigned long, int,int);
 
 int main(int argc, char **argv)
