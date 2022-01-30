@@ -3,7 +3,6 @@
 #include <string.h>
 //commande de compil gcc Projet.c -o Projet
 int creationfichier(FILE*,unsigned long ,int , unsigned long , unsigned long, int,int);
-
 int main(int argc, char **argv)
 {   
     if (argc!=3)
