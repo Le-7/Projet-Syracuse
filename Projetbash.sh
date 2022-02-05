@@ -102,37 +102,42 @@ echo "Altitude max moyenne (arrondie a l'entier superieur) = $(($moy3/$i))" >> s
 cp synthese-$x-$y.txt ../synthese-$x-$y.txt #on ecrase le fichier s'il existe deja (d'ou le cp)
 echo "Fichiers sources bien crees"
 echo "Creation des graphiques ..." 
+#on creer les graphiques grace a gnuplot en fonction des fichiers précedents
 gnuplot <<EOF     
-set terminal jpeg 
-set output "../vols$x-$y.jpg"
-set title 'Un en fonction de n'
-set xlabel 'n'
-set ylabel 'Un'
-plot for [t = $x : $y : 1] 'f'.t.'.dat' i 0 u 1:2 with lines title ''
-EOF    #on execute des commandes dans gnuplot jusqu'au signal de fin(EOF) pour creer les differents graphiques
+    set terminal jpeg 
+    set output "../vols$x-$y.jpg"
+    set title 'Un en fonction de n'
+    set xlabel 'n'
+    set ylabel 'Un'
+    plot for [t = $x : $y : 1] 'f'.t.'.dat' i 0 u 1:2 with lines title ''
+    exit
+EOF    
 gnuplot <<EOF
-set terminal jpeg 
-set output "../altmax$x-$y.jpg"
-set title 'Altitude maximum pour chaque U0'
-set xlabel 'U0'
-set ylabel 'Altitude max'
-plot "titi.dat" u 1:2 with lines title ''
+    set terminal jpeg 
+    set output "../altmax$x-$y.jpg"
+    set title 'Altitude maximum pour chaque U0'
+    set xlabel 'U0'
+    set ylabel 'Altitude max'
+    plot "titi.dat" u 1:2 with lines title ''
+    exit
 EOF
 gnuplot <<EOF
-set terminal jpeg 
-set output "../dureedevol$x-$y.jpg"
-set title 'Durée de vol pour chaque U0'
-set xlabel 'U0'
-set ylabel 'Durée de vol'
-plot "tata.dat" u 1:2 with lines title ''
+    set terminal jpeg 
+    set output "../dureedevol$x-$y.jpg"
+    set title 'Durée de vol pour chaque U0'
+    set xlabel 'U0'
+    set ylabel 'Durée de vol'
+    plot "tata.dat" u 1:2 with lines title ''
+    exit
 EOF
 gnuplot <<EOF
-set terminal jpeg 
-set output "../dureevolalt$x-$y.jpg"
-set title 'Durée de vol en altitude pour chaque U0'
-set xlabel 'U0'
-set ylabel 'Durée de vol en altitude'
-plot "toto.dat" u 1:2 with lines title '' 
+    set terminal jpeg 
+    set output "../dureevolalt$x-$y.jpg"
+    set title 'Durée de vol en altitude pour chaque U0'
+    set xlabel 'U0'
+    set ylabel 'Durée de vol en altitude'
+    plot "toto.dat" u 1:2 with lines title '' 
+    exit
 EOF
 echo "Graphiques bien crees les voici :"
 cd ..

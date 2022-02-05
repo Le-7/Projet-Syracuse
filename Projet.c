@@ -27,7 +27,6 @@ int main(int argc, char **argv)
     FILE* fichier; 
 	char* nomfichier = NULL;
 	nomfichier = argv[2];
-	int veriff;
 	fichier = (fopen((strcat(nomfichier, ".dat")),"w+")); //on ouvre un fichier .dat en droit d'écriture
     int volmax = 0;
     if(fichier == NULL)
