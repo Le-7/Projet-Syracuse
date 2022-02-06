@@ -1,22 +1,28 @@
+/* PROJET SYRACUSE
+ * COSTA Mathéo & AÏT CHADI Anissa
+ * PRÉING2 MI GROUPE 3
+ */
+
+                                //Inclusion des bibliothèques
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string.h>             //Prototype de fonction
 int creationfichier(FILE*,unsigned long ,int , unsigned long , unsigned long, int,int);
-//appel des bibliotheques nécessaire et prototype de fonction
-int main(int argc, char **argv)
-{       //on verifie que le programme a bien été appelé sans erreur (trop d'argument ou pas un entier)
-    if (argc!=3)
+                              
+int main(int argc, char **argv) //Fonction principale
+{                               
+    if (argc!=3)                //On vérifie que le programme a bien été appelé sans erreur (trop d'arguments ou pas un entier)
     {
         printf("Nombre d'argument incorrect\n"); 
         exit(1);
     }
-        //déclaration des variables
+                                //Déclaration des variables
     unsigned long U0 = 0;
     int n=0;
     unsigned long maxtmp = 0;
     unsigned long U0tmp = 0;
     char* pointeurdefin;
-    U0 = strtoul(argv[1], &pointeurdefin, 10); //fonction de string.h "string to unsigned long"(convertir)
+    U0 = strtoul(argv[1], &pointeurdefin, 10); //Fonction incluse dans string.h pour convertir chaine de caractères vers entiers non signés ("string to unsigned long")
     if(U0==0)
     {
         puts("U0 n'est pas un entier superieur a 0");
@@ -27,37 +33,35 @@ int main(int argc, char **argv)
     FILE* fichier; 
 	char* nomfichier = NULL;
 	nomfichier = argv[2];
-	fichier = (fopen((strcat(nomfichier, ".dat")),"w+")); //on ouvre un fichier .dat en droit d'écriture
+	fichier = (fopen((strcat(nomfichier, ".dat")),"w+"));         //On ouvre un fichier .dat en droit d'écriture
     int volmax = 0;
     if(fichier == NULL)
 		{                
 			fprintf(stderr,"Impossible de creer le fichier \n");
 			exit(3);
 		}
-	/*else{
-		fprintf(stderr,"Fichier bien crée\n");
-		} */
-    creationfichier(fichier,U0,n,maxtmp,U0tmp,altitude, volmax); //appel de la fonction récursive
+		
+    creationfichier(fichier,U0,n,maxtmp,U0tmp,altitude, volmax); //Appel de la fonction récursive
 }
 
-//la ca devient compliqué a expliquer
-int creationfichier(FILE* fichier,unsigned long x,int i, unsigned long max, unsigned long tmp, int inf,int maxpourvolalt)
+
+int creationfichier(FILE* fichier,unsigned long x,int i, unsigned long max, unsigned long tmp, int inf,int maxpourvolalt) //Fonction récursive
 {
-    if(x>=tmp) inf++; //pour le calcul de vol en altitude
+    if(x>=tmp) inf++;                               //Boucle pour le calcul de vol en altitude
     if(x<tmp)
     {
-        if(maxpourvolalt<inf) maxpourvolalt =inf; //on enregistre le maximum s'il l'est
-        inf =0;  //on remet a 0 s'il retombe en dessous de la valeur de départ
+        if(maxpourvolalt<inf) maxpourvolalt =inf;   //Si la valeur est maximale, alors on l'enregistre en tant que maximum
+        inf =0;                                     //On remet à 0 s'il retombe en dessous de la valeur de départ
     }
     if(max<x) max= x;   //pour calculer le max
-    fprintf(fichier,"%d %lu\n",i,x);  //on écrit dans le fichier la nieme etape et le Un
-    if(x==1) //condition d'arret
+    fprintf(fichier,"%d %lu\n",i,x);                //On écrit dans le fichier la nième étape et le Un
+    if(x==1)                                        //Condition d'arret
     {
-        if(maxpourvolalt<=0)maxpourvolalt =1;  //pour pas avoir de probleme dans la suite avec un O
-        fprintf(fichier,"\nAltitudemax=%lu\nDureevol=%d\ndureealtitude=%d\n",max,i, maxpourvolalt-1);  //si x=1 alors on a fini, on ecrit a la fin du  fichier ce qui nous interesse 
+        if(maxpourvolalt<=0)maxpourvolalt =1;       //Pour ne pas avoir de problèmes dans la suite avec un O
+        fprintf(fichier,"\nAltitudemax=%lu\nDureevol=%d\ndureealtitude=%d\n",max,i, maxpourvolalt-1);  //si x=1 alors on a fini, on écrit à la fin du fichier ce qui nous intéresse 
         return 0;
     }
-    //appels recursifs
+                                                    //Appels recursifs
     if (x%2==0) creationfichier(fichier,x/2,i+1,max, tmp, inf, maxpourvolalt);
     else creationfichier(fichier,x*3+1,i+1,max,tmp, inf, maxpourvolalt);
 
