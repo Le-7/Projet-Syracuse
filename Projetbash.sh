@@ -31,7 +31,12 @@ fi
 }
 
 aide(){
-echo "Blabla aide"              #fonction d'affichage de l'aide
+echo "******"
+echo "*AIDE*"
+echo "******"
+echo "Veuillez entrer les bornes de vol sous forme de deux entiers compris entre 1 et 4294967295."
+echo "Merci de les séparer par un espace." 
+echo "N'entrez rien d'autre que des chiffres. Pas de point, pas de virugle ni d'autre caractère."              #fonction d'affichage de l'aide
 }
 
 creation(){                     #fonction principale de création des graphiques
@@ -111,7 +116,8 @@ gnuplot <<EOF
     set ylabel 'Un'
     plot for [t = $x : $y : 1] 'f'.t.'.dat' i 0 u 1:2 with lines title ''
     exit
-EOF    
+EOF
+   
 gnuplot <<EOF
     set terminal jpeg 
     set output "../altmax$x-$y.jpg"
