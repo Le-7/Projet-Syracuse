@@ -1,0 +1,31 @@
+Voici notre projet Syracuse.
+ 
+Le dossier téléchargé contient normalement : 
+
+    - Le programme en C utilisé par le script
+    - Le script en bash (attention veillez à bien lui mettre les permissions nécessaires afin de l’exécuter par exemple chmod +777 Projetbash.sh)
+
+Des éléments complémentaires sont requis : 
+
+    - Gcc pour compiler le programme en c
+    - Gnuplot pour la création des graphiques (sudo apt install gnuplot)
+    - Imagemagick (sudo apt install imagemagick et lien en commentaires du script si problème)
+    - Gnome (si vous disposez d’un chromebook notamment)
+
+Utilisation du script :
+
+    1. Veuillez ouvrir un terminal et vous placer dans le répertoire du projet (Projet-Syracuse-main-Matheo&Anissa) 
+    2. Tapez la ligne de commande suivante dans le terminal : chmod +777 Projetbash.sh
+    3. Pour obtenir l’aide : ./Projetbash.sh -h
+    4. Appel du script : ./Projetbash.sh n1 n2 (avec n1 et n2 les bornes de l’intervalle voulu)
+
+Codes d’erreur du programme .C :
+
+    - exit(1) : nombre d’arguments incorrect 
+    - exit (2) : u0 n’est pas un entier supérieur à 0
+    - exit (3) : impossible de créer le fichier 
+    
+Les erreurs du script s’afficheront directement dans le terminal.
+
+Merci d’avoir utilisé notre programme, pour toute question ou information veuillez nous contacter par mail (ou teams parce que c’est plus rapide :D) matheo.rui.costa@gmail.com anissa.atc@gmail.com 
+Lien du github : https://github.com/Le-7/Projet-Syracuse
