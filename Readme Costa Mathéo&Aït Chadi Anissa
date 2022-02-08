@@ -4,12 +4,13 @@ Le dossier téléchargé contient normalement :
 
     - Le programme en C utilisé par le script
     - Le script en bash (attention veillez à bien lui mettre les permissions nécessaires afin de l’exécuter par exemple chmod +777 Projetbash.sh)
+    - Le rapport pdf avec les captures d'écran d'un exemple (intervalle 100-400)
 
-Des éléments complémentaires sont requis : 
+Des éléments complémentaires peuvent être requis : 
 
     - Gcc pour compiler le programme en c
     - Gnuplot pour la création des graphiques (sudo apt install gnuplot)
-    - Imagemagick (sudo apt install imagemagick et lien en commentaires du script si problème)
+    - Imagemagick (sudo apt install imagemagick et lien en commentaires du script et dans le rapport si besoin de la documentation)
     - Gnome (si vous disposez d’un chromebook notamment)
 
 Utilisation du script :
