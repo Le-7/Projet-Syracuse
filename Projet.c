@@ -6,7 +6,8 @@
                                 //Inclusion des bibliothèques
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>             //Prototype de fonction
+#include <string.h> 
+                                //Prototype de fonction
 int creationfichier(FILE*,unsigned long ,int , unsigned long , unsigned long, int,int);
                               
 int main(int argc, char **argv) //Fonction principale
