@@ -15,7 +15,7 @@ Des éléments complémentaires peuvent être requis :
 
 Utilisation du script :
 
-    1. Veuillez ouvrir un terminal et vous placer dans le répertoire du projet (Projet-Syracuse-main-Matheo&Anissa) 
+    1. Veuillez ouvrir un terminal et vous placer dans le répertoire du projet (Projet-Syracuse-main) 
     2. Tapez la ligne de commande suivante dans le terminal : chmod +777 Projetbash.sh
     3. Pour obtenir l’aide : ./Projetbash.sh -h
     4. Appel du script : ./Projetbash.sh n1 n2 (avec n1 et n2 les bornes de l’intervalle voulu)
